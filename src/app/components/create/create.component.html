@@ -1,0 +1,40 @@
+<div class="flex-container">    
+    <form [formGroup]='registrationForm' class="example-form flex-container" (ngSubmit)="onSubmit()">
+        <h2>Registration form</h2>
+        <mat-form-field>
+            <mat-label>Username</mat-label>
+            <input formControlName='userName' matInput type="text">
+            <mat-error *ngIf="registrationForm.get('userName').hasError('required') && registrationForm.get('userName').touched">
+                Please enter a valid email address
+              </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input formControlName='password' matInput type="text">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Confirm Password</mat-label>
+            <input formControlName='confirmPassword' matInput type="text">
+        </mat-form-field>
+        <div formGroupName="address" class="flex-container">
+            <mat-form-field>
+                <mat-label>City</mat-label>
+                <input formControlName='city' matInput type="text">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>State</mat-label>
+                <input formControlName='state' matInput type="text">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Postal Code</mat-label>
+                <input formControlName='postalCode' matInput type="text">
+            </mat-form-field>
+        </div>
+        <div class="flex-row">
+            <button [disabled]='registrationForm.invalid' mat-raised-button type="submit">Register</button>
+            <button (click)='loadApiData()' mat-raised-button type="button">Load example data</button>
+        </div>
+
+
+    </form>
+</div>
